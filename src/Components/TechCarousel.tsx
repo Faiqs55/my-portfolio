@@ -66,7 +66,7 @@ const TechCarousel = () => {
         {doubled.map((item, i) => (
           <div
             key={`${item.alt}-${i}`}
-            className="card-body p-2 h-[80px] min-w-[80px] flex-shrink-0"
+            className="card-body p-2 h-[60px] sm:h-[80px] w-[60px] sm:min-w-[80px] flex-shrink-0"
           >
             <img
               className="object-center object-contain h-full w-full"

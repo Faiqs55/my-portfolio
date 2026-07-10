@@ -47,7 +47,7 @@ const hoverTransition = {
 
 const Page = () => {
   return (
-    <div className="pt-5 md:pt-[90px] 2xl:pt-[110px]">
+    <div className="pt-20 md:pt-[90px] 2xl:pt-[110px]">
       <motion.div
         className="grid grid-cols-6 xl:grid-cols-7 gap-3 md:gap-5 px-5"
         variants={containerVariants}
@@ -56,7 +56,7 @@ const Page = () => {
       >
         {/* About */}
         <motion.div
-          className="card-body col-span-6 lg:col-span-3 xl:col-span-2 h-[150px] md:h-[200px] lg:h-[220px] xl:h-[354px] flex items-end p-4 sm:p-7 cursor-pointer card-hover"
+          className="card-body col-span-6 lg:col-span-3 xl:col-span-2 h-[150px] md:h-[200px] lg:h-[220px] xl:h-[354px] flex flex-col justify-between p-4 sm:p-7 cursor-pointer card-hover"
           variants={cardVariants}
           whileHover={{
             y: -8,
@@ -66,6 +66,7 @@ const Page = () => {
           }}
           transition={hoverTransition}
         >
+          <p className="text-gray-600 font-inter text-sm md:text-2xl">Learn more about Me, My 3 years work experience and Tech Stack.</p>
           <motion.h4 className="font-inter sm:text-lg flex items-center justify-between w-full">
             <span>About</span>
             <motion.span
@@ -80,7 +81,7 @@ const Page = () => {
 
         {/* Portfolio */}
         <motion.div
-          className="card-body col-span-6 lg:col-span-3 xl:col-span-5 h-[150px] md:h-[200px] lg:h-[220px] xl:h-[354px] flex items-end p-4 sm:p-7 cursor-pointer card-hover"
+          className="card-body col-span-6 lg:col-span-3 xl:col-span-5 h-[150px] md:h-[200px] lg:h-[220px] xl:h-[354px] flex flex-col justify-between p-4 sm:p-7 cursor-pointer card-hover"
           variants={cardVariants}
           whileHover={{
             y: -8,
@@ -90,6 +91,8 @@ const Page = () => {
           }}
           transition={hoverTransition}
         >
+                    <p className="text-gray-600 font-inter text-sm md:text-2xl">See what I'm capable of by looking at the projects I've Built over the years. And See the before and after of the businesses.</p>
+
           <motion.h4 className="font-inter text-sm sm:text-lg flex items-center justify-between w-full">
             <span>Portfolio</span>
             <motion.span
