@@ -32,7 +32,10 @@
     rgba(171, 171, 171, 0.35) 0px 30px 30px -3.25px;
 }
 
-
+/* Smooth scrolling for the entire site */
+html {
+  scroll-behavior: smooth;
+}
 
 @layer components{
 .btn-primary {
@@ -85,8 +88,8 @@ nav {
   background-color: rgba(245, 245, 245, 0.2);
   width: 100%;
   opacity: 1;
-  transition: all 300ms ease-in-out;
   z-index: 1000;
+  will-change: transform, opacity;
 }
 
 
