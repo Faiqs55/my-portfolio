@@ -29,7 +29,7 @@ export default function RootLayout({
       className={`${inter.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[#F5F5F5]">
-        <Navbar/>
+        <Navbar />
         {children}
       </body>
     </html>
