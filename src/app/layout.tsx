@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
+import SmoothScroll from "@/Components/SmoothScroll";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,8 +31,9 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-[#F5F5F5]">
         <Navbar />
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
 }
+

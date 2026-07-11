@@ -76,6 +76,9 @@ html {
   border-radius: 20px;
   will-change: transform, box-shadow;
 }
+.img-shadow{
+  box-shadow: var(--svg-shadow);
+}
 
 .card-hover {
   transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
