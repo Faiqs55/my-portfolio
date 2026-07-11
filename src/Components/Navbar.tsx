@@ -102,7 +102,7 @@ const Navbar = () => {
           ) : (
             <motion.button
               key="back"
-              onClick={() => router.push("/")}
+              onClick={() => router.back()}
               className="flex items-center gap-2 font-semibold text-lg sm:text-xl cursor-pointer text-black hover:text-gray-600 transition-colors"
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}

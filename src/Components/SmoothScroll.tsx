@@ -1,90 +1,35 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { usePathname } from "next/navigation";
-
-interface SmoothScrollProps {
-  children: React.ReactNode;
-}
+import React, { useEffect } from "react";
+import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const contentRef = useRef<HTMLDivElement>(null);
-  
-  // State for the scrollable content's height
-  const [contentHeight, setContentHeight] = useState(0);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-
-  // Measure the content height dynamically
   useEffect(() => {
-    // Detect touch device
-    const touchCheck = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    setIsTouchDevice(touchCheck);
+    // Initialize Lenis smooth scroll configuration
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth exponential ease
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+    });
 
-    if (touchCheck || pathname === "/portfolio") return;
-
-    const handleResize = () => {
-      if (contentRef.current) {
-        setContentHeight(contentRef.current.scrollHeight);
-      }
-    };
-
-    // Initial measurement
-    handleResize();
-
-    // ResizeObserver tracks content size changes (images loading, accordion expands, etc.)
-    const resizeObserver = new ResizeObserver(() => handleResize());
-    if (contentRef.current) {
-      resizeObserver.observe(contentRef.current);
+    // Track requestAnimationFrame loop to update scroll timeline
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
     }
+    rafId = requestAnimationFrame(raf);
 
-    // Fallback periodic height checks
-    const intervalId = setInterval(handleResize, 1000);
-
+    // Cleanup scroll observers and destroy Lenis instances on page unload
     return () => {
-      resizeObserver.disconnect();
-      clearInterval(intervalId);
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
     };
-  }, [pathname]);
+  }, []);
 
-  const { scrollY } = useScroll();
-
-  // Create a smoothed spring value based on raw scrollY
-  const springConfig = {
-    damping: 18,
-    stiffness: 45,
-    mass: 0.25,
-  };
-  
-  // Smooth out scroll value
-  const smoothY = useSpring(scrollY, springConfig);
-  
-  // Transform positive scrollY (native scroll down) to negative translateY
-  const y = useTransform(smoothY, (value) => -value);
-
-  // If on mobile/touch, or on the Portfolio page (where we use native sticky-linked scrolling), bypass
-  if (isTouchDevice || pathname === "/portfolio") {
-    return <>{children}</>;
-  }
-
-  return (
-    <>
-      {/* Fixed viewport containing the translated view */}
-      <motion.div
-        ref={contentRef}
-        style={{ y }}
-        className="fixed top-0 left-0 w-full overflow-hidden will-change-transform z-10"
-      >
-        {children}
-      </motion.div>
-      
-      {/* Dummy spacer to give native scroll height to the scrollbar */}
-      <div 
-        style={{ height: contentHeight }} 
-        className="relative w-full pointer-events-none"
-        aria-hidden="true"
-      />
-    </>
-  );
+  return <>{children}</>;
 }

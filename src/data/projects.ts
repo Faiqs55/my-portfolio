@@ -1,4 +1,25 @@
-const projects = [
+export interface IProjects {
+   id: number;
+   name: string;
+   category: string;
+   client: string;
+   role: string;
+   year: string;
+   desc: string;
+   challenge: string;
+   solution: string;
+   result: string;
+   heroImg: string;
+   img1: string;
+   img2: string;
+   img3: string;
+   img4: string;
+   liveURL: string;
+   githubURL?: string;
+   slug: string;
+}
+
+const projects: IProjects[] = [
     {
        id: 1,
        name: "Sound Blast",
@@ -16,6 +37,7 @@ const projects = [
        img3: "/soundb/three.webp",
        img4: "/soundb/four.webp",
        liveURL: "https://soundb.vercel.app/",
+       githubURL: "https://github.com/Faiqs55/sound-blast-next",
        slug: "sound-blast"
     },
     {
@@ -54,29 +76,10 @@ const projects = [
        img3: "/urbanc/3.webp",
        img4: "/urbanc/4.webp",
        liveURL: "https://urban-craftff.vercel.app/",
+       githubURL: "https://github.com/Faiqs55/react-projects/tree/master/furniture-appwrite",
        slug: "urban-craft"
     },
     
 ];
 
-export interface IProjects {
-       id: number;
-       name: string;
-       category: string;
-       client: string;
-       role: string;
-       year: string;
-       desc: string;
-       challenge: string;
-       solution: string;
-       result: string;
-       heroImg: string;
-       img1: string;
-       img2: string;
-       img3: string;
-       img4: string;
-       liveURL: string;
-       slug: string;
-}
-
-export default projects
+export default projects;

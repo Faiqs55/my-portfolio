@@ -145,41 +145,27 @@ export default function PortfolioPage() {
             </motion.div>
           </div>
 
-          {/* Section 1: Project Card 1 */}
-          <motion.div 
-            custom={0}
-            variants={cardEntranceVariants}
-            initial="hidden"
-            animate="visible"
-            style={{ rotate: rotate1 }} 
-            className="w-[85vw] sm:w-[70vw] md:w-[50vw] xl:w-[48vw] max-w-[750px] shrink-0 relative z-20"
-          >
-            <ProjectCard data={projects[0]} />
-          </motion.div>
-
-          {/* Section 2: Project Card 2 (Stacks over Card 1 using relative transform offset) */}
-          <motion.div 
-            custom={1}
-            variants={cardEntranceVariants}
-            initial="hidden"
-            animate="visible"
-            style={{ x: cardShift, rotate: rotate2 }} 
-            className="w-[85vw] sm:w-[70vw] md:w-[50vw] xl:w-[48vw] max-w-[750px] shrink-0 relative z-30"
-          >
-            <ProjectCard data={projects[1]} />
-          </motion.div>
-
-          {/* Section 3: Project Card 3 (Slides in unison with Card 2, maintaining tight gap, does NOT stack) */}
-          <motion.div 
-            custom={2}
-            variants={cardEntranceVariants}
-            initial="hidden"
-            animate="visible"
-            style={{ x: cardShift, rotate: rotate3 }} 
-            className="w-[85vw] sm:w-[70vw] md:w-[50vw] xl:w-[48vw] max-w-[750px] shrink-0 relative z-40"
-          >
-            <ProjectCard data={projects[2]} />
-          </motion.div>
+          {/* Project Cards Loop */}
+          {projects.map((project, i) => {
+            const rotates = [rotate1, rotate2, rotate3];
+            return (
+              <motion.div 
+                key={project.slug || i}
+                custom={i}
+                variants={cardEntranceVariants}
+                initial="hidden"
+                animate="visible"
+                style={{ 
+                  x: i > 0 ? cardShift : undefined, 
+                  rotate: rotates[i % rotates.length],
+                  zIndex: 20 + i * 10
+                }} 
+                className="w-[85vw] sm:w-[70vw] md:w-[50vw] xl:w-[48vw] max-w-[750px] shrink-0 relative"
+              >
+                <ProjectCard data={project} />
+              </motion.div>
+            );
+          })}
 
         </motion.div>
       </div>

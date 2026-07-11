@@ -23,14 +23,14 @@ const expContainerVariants = {
 };
 
 const expItemVariants = {
-  hidden: { opacity: 0, x: -30 },
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
       type: "spring" as const,
-      stiffness: 80,
-      damping: 16,
+      stiffness: 60,
+      damping: 18,
     },
   },
 };
@@ -73,11 +73,19 @@ const AboutPage = () => {
           About
         </motion.h1>
 
-        {/* Scroll-reveal paragraph */}
-        <TextReveal
-          text={aboutText}
-          className="text-2xl md:text-3xl lg:text-4xl font-plus-jakarta font-semibold w-full lg:w-[75%] self-end leading-[1.4]"
-        />
+        {/* Scroll-reveal paragraph wrapped in absolute fade animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 35, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 1.2, ease: [0.215, 0.61, 0.355, 1] }}
+          className="w-full lg:w-[75%] self-end"
+        >
+          <TextReveal
+            text={aboutText}
+            className="text-2xl md:text-3xl lg:text-4xl font-plus-jakarta font-semibold leading-[1.4]"
+          />
+        </motion.div>
 
         {/* Parallax Image Component */}
         <div
