@@ -48,6 +48,30 @@ const Navbar = () => {
   const { scrollY } = useScroll();
   const [navHidden, setNavHidden] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [time, setTime] = useState<string>("--:--:-- PKT");
+
+  useEffect(() => {
+    const updateTime = () => {
+      try {
+        const formatter = new Intl.DateTimeFormat("en-US", {
+          timeZone: "Asia/Karachi",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+        });
+        setTime(formatter.format(new Date()) + " PKT");
+      } catch (e) {
+        // Fallback if internationalization timezone is not supported
+        const now = new Date();
+        setTime(now.toLocaleTimeString("en-US") + " PKT");
+      }
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -133,7 +157,7 @@ const Navbar = () => {
         className="flex gap-20 items-center"
         variants={childVariants}
       >
-        <span className="font-semibold">Time</span>
+        <span className="font-semibold tabular-nums min-w-[120px] text-right">{time}</span>
         <motion.span
           className="h-3.5 w-3.5 bg-black rounded-full md:block hidden relative"
           whileHover={{ scale: 1.4 }}

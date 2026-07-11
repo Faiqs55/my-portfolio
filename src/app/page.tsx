@@ -161,8 +161,9 @@ const Page = () => {
           >
             <TechCarousel />
           </motion.div>
-          <motion.div
-            className="card-body flex items-end cursor-pointer group transition-colors duration-300 hover:bg-[#f0f0f0]"
+          <a className="block h-full" href="https://docs.google.com/document/d/1AwEfWic-T0sjTy-mI4vReL2WW81IrEDrNo3buLfr0M8/edit?usp=sharing" target="_blank">
+            <motion.div
+            className="h-full card-body flex items-end cursor-pointer group transition-colors duration-300 hover:bg-[#f0f0f0]"
             whileHover={cardHoverSmall}
             transition={hoverTransition}
           >
@@ -176,6 +177,7 @@ const Page = () => {
               </span>
             </h4>
           </motion.div>
+          </a>
         </motion.div>
       </motion.div>
     </div>

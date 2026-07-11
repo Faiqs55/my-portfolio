@@ -9,7 +9,7 @@ import Marquee from "@/Components/Marquee";
 import { exp } from "../../data/exp";
 
 const aboutText =
-  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit laborum magni dolorum nesciunt eaque repellendus iste error ab voluptates tempore repudiandae eos officia fuga, nihil, nobis ducimus aspernatur ipsam dolor asperiores quisquam in beatae? Eligendi iste asperiores iusto nulla exercitationem odit, harum, et ut facere ullam consequuntur fugiat dolores nihil? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam, numquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolore doloremque delectus sed magni harum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, vitae.";
+  "With over 3 years of software development experience, I specialize in transforming ideas into scalable, high-quality digital products. My core expertise lies in the MERN Stack and Next.js, enabling me to build modern, fast, and production-ready web applications - Beyond development, I focus on reliable deployment and infrastructure using Docker, Kubernetes (K8s), and Jenkins to ensure applications are secure, scalable, and easy to maintain - I also leverage n8n and AI engineering to automate workflows, integrate intelligent systems, and build solutions that reduce manual effort while enhancing productivity. My goal is to deliver software that is not only functional but also efficient, scalable, and built to solve real-world problems.";
 
 // Experience row stagger
 const expContainerVariants = {
