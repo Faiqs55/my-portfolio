@@ -17,8 +17,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Faiq Shah — Full Stack Engineer",
-  description: "Portfolio of Faiq Shah, Full Stack & Cloud Engineer building bespoke digital experiences.",
+  title: "Faiq S. — Full Stack Engineer",
+  description: "Portfolio of Faiq S., Full Stack & Cloud Engineer building bespoke digital experiences.",
 };
 
 export default function RootLayout({

@@ -114,7 +114,7 @@ const Footer = () => {
             variants={itemVariants}
             className="font-inter text-xs text-gray-400 font-medium"
           >
-            © {new Date().getFullYear()} Faiq Shah. All rights reserved.
+            © {new Date().getFullYear()} Faiq S. All rights reserved.
           </motion.p>
 
           {/* Social icons */}
